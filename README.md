@@ -1,54 +1,32 @@
-# Dome Gallery - Next.js Implementation
+# 🌟 최지은 (Choi Jieun)
 
-React Bits의 Dome Gallery를 Next.js로 구현한 프로젝트입니다.
+안녕하세요! 저는 **최지은**입니다. 🎨✨
 
-## 기능
+## 👤 About Me
 
-- 🎨 3D 돔 형태의 이미지 갤러리
-- 🖱️ 마우스 움직임에 반응하는 인터랙티브 UI
-- 🔄 드래그로 회전 가능
-- ✨ Hover 시 이미지 확대 효과
-- 📱 반응형 디자인
+- **이름**: 최지은
+- **MBTI**: ESTP
+- **소속**: 2팀
+- **특징**: 지선사
 
-## 시작하기
+## 🎯 Portfolio
 
-### 1. 의존성 설치
+이 웹사이트는 저를 소개하기 위한 인터랙티브 포트폴리오입니다.
+
+## 🚀 시작하기
+
+### 프로젝트 실행
 
 ```bash
+# 의존성 설치
 npm install
-# or
-yarn install
-# or
-pnpm install
-```
 
-### 2. 개발 서버 실행
-
-```bash
+# 개발 서버 실행
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
-브라우저에서 [http://localhost:3000](http://localhost:3000)을 열어 결과를 확인하세요.
+궁금한 점이 있으시면 언제든 연락주세요!
 
-## 기술 스택
+---
 
-- **Next.js 14** - React 프레임워크
-- **TypeScript** - 타입 안정성
-- **Framer Motion** - 애니메이션 라이브러리
-- **CSS Modules** - 스타일링
-
-## 이미지 출처
-
-이미지는 [Unsplash](https://unsplash.com)에서 제공됩니다.
-
-## 사용 방법
-
-- 마우스를 움직여서 갤러리를 회전시킬 수 있습니다
-- 이미지 위에 마우스를 올리면 확대됩니다
-- 드래그로 직접 회전시킬 수도 있습니다
-
-# introduce
+Made with ❤️ by Jieun
