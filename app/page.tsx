@@ -16,7 +16,7 @@ export default function Home() {
       <div
         style={{
           position: "absolute",
-          top: 220,
+          bottom: 0,
           left: 0,
           width: "100%",
           zIndex: 10,
@@ -24,8 +24,8 @@ export default function Home() {
       >
         <CurvedLoop
           marqueeText="최지은 ✦ ESTP ✦ 2팀 ✦ 지선사 ✦"
-          speed={1.5}
-          curveAmount={-200}
+          speed={2}
+          curveAmount={100}
           direction="right"
           interactive={true}
           className="custom-text-style"
