@@ -37,47 +37,47 @@ type ItemDef = {
 
 const DEFAULT_IMAGES: ImageItem[] = [
   {
-    src: "/image/climbing.webp",
+    src: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/image/climbing.webp`,
     alt: "클라이밍",
   },
   {
-    src: "/image/climbing2.webp",
+    src: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/image/climbing2.webp`,
     alt: "클라이밍 2",
   },
   {
-    src: "/image/climbing3.webp",
+    src: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/image/climbing3.webp`,
     alt: "클라이밍 3",
   },
   {
-    src: "/image/flower2.webp",
+    src: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/image/flower2.webp`,
     alt: "꽃",
   },
   {
-    src: "/image/running3.webp",
+    src: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/image/running3.webp`,
     alt: "러닝 3",
   },
   {
-    src: "/image/running4.webp",
+    src: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/image/running4.webp`,
     alt: "러닝 4",
   },
   {
-    src: "/image/running5.webp",
+    src: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/image/running5.webp`,
     alt: "러닝 5",
   },
   {
-    src: "/image/travel.webp",
+    src: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/image/travel.webp`,
     alt: "여행",
   },
   {
-    src: "/image/travel2.webp",
+    src: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/image/travel2.webp`,
     alt: "여행 2",
   },
   {
-    src: "/image/travel3.webp",
+    src: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/image/travel3.webp`,
     alt: "여행 3",
   },
   {
-    src: "/image/travel4.webp",
+    src: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/image/travel4.webp`,
     alt: "여행 4",
   },
 ];
@@ -180,7 +180,7 @@ export default function DomeGallery({
   enlargeTransitionMs = DEFAULTS.enlargeTransitionMs,
   segments = DEFAULTS.segments,
   dragDampening = 2,
-  openedImageWidth = "400px",
+  openedImageWidth = "auto",
   openedImageHeight = "400px",
   imageBorderRadius = "30px",
   openedImageBorderRadius = "30px",

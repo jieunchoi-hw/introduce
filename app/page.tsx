@@ -24,7 +24,7 @@ export default function Home() {
       >
         <CurvedLoop
           marqueeText="최지은 ✦ ESTP ✦ 2팀 ✦ 지선사 ✦"
-          speed={3}
+          speed={2}
           curveAmount={100}
           direction="right"
           interactive={true}
@@ -32,8 +32,8 @@ export default function Home() {
         />
       </div>
 
-      <div style={{ width: "100%", height: "90%", overflow: "hidden" }}>
-        <DomeGallery />
+      <div style={{ width: "100%", height: "100%", overflow: "hidden" }}>
+        <DomeGallery openedImageWidth="auto" openedImageHeight="70vh" />
       </div>
     </main>
   );

@@ -166,7 +166,7 @@ main.sphere-main {
   pointer-events: none;
   opacity: 0;
   transition: opacity 500ms ease;
-  backdrop-filter: blur(3px);
+  backdrop-filter: blur(4px);
 }
 
 .sphere-root[data-enlarging="true"] .viewer .scrim {
