@@ -3,8 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Who is Jieun? | Welcome to My World",
-  description:
-    "안녕하세요! 저는 지은입니다. 3D 갤러리를 통해 제 세계를 탐험해보세요 🌟",
+  description: "안녕하세요! 저는 지은입니다. 저의 관심사를 한번 보시겠어용? 🌟",
 };
 
 export default function RootLayout({

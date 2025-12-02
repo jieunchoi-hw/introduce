@@ -49,8 +49,12 @@ const DEFAULT_IMAGES: ImageItem[] = [
     alt: "클라이밍 3",
   },
   {
-    src: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/image/flower2.webp`,
+    src: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/image/flower.webp`,
     alt: "꽃",
+  },
+  {
+    src: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/image/flower2.webp`,
+    alt: "꽃2",
   },
   {
     src: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/image/running3.webp`,
@@ -63,6 +67,10 @@ const DEFAULT_IMAGES: ImageItem[] = [
   {
     src: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/image/running5.webp`,
     alt: "러닝 5",
+  },
+  {
+    src: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/image/running6.webp`,
+    alt: "러닝 6",
   },
   {
     src: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/image/travel.webp`,
@@ -79,6 +87,10 @@ const DEFAULT_IMAGES: ImageItem[] = [
   {
     src: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/image/travel4.webp`,
     alt: "여행 4",
+  },
+  {
+    src: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/image/travel5.webp`,
+    alt: "여행 5",
   },
 ];
 
