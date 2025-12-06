@@ -8,6 +8,8 @@ interface HistoryItem {
   timestamp: string;
 }
 
+type Mode = "name" | "part";
+
 const NAMES = [
   "이채현",
   "임현준",
@@ -37,11 +39,18 @@ const NAMES = [
   "한영주",
 ];
 
+const PARTS = ["1파트", "2파트", "3파트", "4파트", "5파트"];
+
 export default function RandomPage() {
+  const [mode, setMode] = useState<Mode>("name");
   const [drawnNames, setDrawnNames] = useState<string[]>([]);
   const [history, setHistory] = useState<HistoryItem[]>([]);
   const [isAnimating, setIsAnimating] = useState(false);
   const [currentDraw, setCurrentDraw] = useState<string | null>(null);
+
+  const currentData = mode === "name" ? NAMES : PARTS;
+  const storageKeyDrawn = `drawnItems_${mode}`;
+  const storageKeyHistory = `drawHistory_${mode}`;
 
   // Enable scrolling for this page
   useEffect(() => {
@@ -56,39 +65,48 @@ export default function RandomPage() {
     };
   }, []);
 
-  // Load data from localStorage on mount
+  // Load data from localStorage on mount or when mode changes
   useEffect(() => {
-    const savedDrawnNames = localStorage.getItem("drawnNames");
-    const savedHistory = localStorage.getItem("drawHistory");
+    const savedDrawnNames = localStorage.getItem(storageKeyDrawn);
+    const savedHistory = localStorage.getItem(storageKeyHistory);
 
     if (savedDrawnNames) {
       setDrawnNames(JSON.parse(savedDrawnNames));
+    } else {
+      setDrawnNames([]);
     }
+
     if (savedHistory) {
       setHistory(JSON.parse(savedHistory));
+    } else {
+      setHistory([]);
     }
-  }, []);
+
+    setCurrentDraw(null);
+  }, [mode, storageKeyDrawn, storageKeyHistory]);
 
   // Save to localStorage whenever drawnNames or history changes
   useEffect(() => {
     if (drawnNames.length > 0) {
-      localStorage.setItem("drawnNames", JSON.stringify(drawnNames));
+      localStorage.setItem(storageKeyDrawn, JSON.stringify(drawnNames));
     }
-  }, [drawnNames]);
+  }, [drawnNames, storageKeyDrawn]);
 
   useEffect(() => {
     if (history.length > 0) {
-      localStorage.setItem("drawHistory", JSON.stringify(history));
+      localStorage.setItem(storageKeyHistory, JSON.stringify(history));
     }
-  }, [history]);
+  }, [history, storageKeyHistory]);
 
   const handleDraw = () => {
     if (isAnimating) return;
 
-    const availableNames = NAMES.filter((name) => !drawnNames.includes(name));
+    const availableNames = currentData.filter(
+      (name) => !drawnNames.includes(name)
+    );
 
     if (availableNames.length === 0) {
-      alert("모든 이름이 뽑혔습니다!");
+      alert(`모든 ${mode === "name" ? "이름이" : "파트가"} 뽑혔습니다!`);
       return;
     }
 
@@ -138,22 +156,43 @@ export default function RandomPage() {
       setDrawnNames([]);
       setHistory([]);
       setCurrentDraw(null);
-      localStorage.removeItem("drawnNames");
-      localStorage.removeItem("drawHistory");
+      localStorage.removeItem(storageKeyDrawn);
+      localStorage.removeItem(storageKeyHistory);
     }
   };
 
-  const remainingCount = NAMES.length - drawnNames.length;
+  const remainingCount = currentData.length - drawnNames.length;
 
   return (
     <div className="random-container">
       <div className="random-content">
         {/* Title Section */}
         <div className="title-section">
-          {/* <h1>이름 랜덤뽑기</h1> */}
+          {/* Mode Selector */}
+          <div className="mode-selector">
+            <button
+              className={`mode-button ${mode === "name" ? "active" : ""}`}
+              onClick={() => setMode("name")}
+            >
+              이름
+            </button>
+            <button
+              className={`mode-button ${mode === "part" ? "active" : ""}`}
+              onClick={() => setMode("part")}
+            >
+              파트
+            </button>
+          </div>
+
           <div className="stats">
-            <span className="remaining">남은 인원: {remainingCount}명</span>
-            <span className="total">전체: {NAMES.length}명</span>
+            <span className="remaining">
+              남은 {mode === "name" ? "인원" : "파트"}: {remainingCount}
+              {mode === "name" ? "명" : "개"}
+            </span>
+            <span className="total">
+              전체: {currentData.length}
+              {mode === "name" ? "명" : "개"}
+            </span>
           </div>
         </div>
 
@@ -190,7 +229,7 @@ export default function RandomPage() {
           <div className="cards-section">
             {/* <h2>이름 카드</h2> */}
             <div className="cards-grid">
-              {NAMES.map((name, index) => (
+              {currentData.map((name, index) => (
                 <div
                   key={index}
                   className={`name-card ${
@@ -211,7 +250,9 @@ export default function RandomPage() {
         <div className="history-section">
           <h2>뽑기 기록</h2>
           {history.length === 0 ? (
-            <p className="no-history">아직 뽑힌 이름이 없습니다.</p>
+            <p className="no-history">
+              아직 뽑힌 {mode === "name" ? "이름이" : "파트가"} 없습니다.
+            </p>
           ) : (
             <div className="history-list">
               {history.map((item, index) => (

@@ -25,6 +25,43 @@
   text-align: center;
   color: white;
   padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* Mode Selector */
+.mode-selector {
+  display: flex;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 0.25rem;
+  border-radius: 30px;
+  backdrop-filter: blur(10px);
+  z-index: 10;
+}
+
+.mode-button {
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.mode-button:hover {
+  color: white;
+}
+
+.mode-button.active {
+  background: white;
+  color: #ff6a00;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .title-section h1 {
@@ -313,6 +350,16 @@
   .stats {
     flex-direction: column;
     gap: 0.5rem;
+  }
+
+  .mode-selector {
+    width: 100%;
+  }
+
+  .mode-button {
+    flex: 1;
+    padding: 0.6rem 1rem;
+    font-size: 0.95rem;
   }
 
   .draw-result {
