@@ -150,57 +150,60 @@ export default function RandomPage() {
       <div className="random-content">
         {/* Title Section */}
         <div className="title-section">
-          <h1>이름 랜덤뽑기</h1>
+          {/* <h1>이름 랜덤뽑기</h1> */}
           <div className="stats">
             <span className="remaining">남은 인원: {remainingCount}명</span>
             <span className="total">전체: {NAMES.length}명</span>
           </div>
         </div>
 
-        {/* Draw Result */}
-        <div className="draw-section">
-          <div
-            className={`draw-result ${currentDraw ? "active" : ""} ${
-              isAnimating ? "animating" : ""
-            }`}
-          >
-            {currentDraw ? currentDraw : "?"}
-          </div>
-          <button
-            className="draw-button"
-            onClick={handleDraw}
-            disabled={isAnimating || remainingCount === 0}
-          >
-            {isAnimating
-              ? "뽑는 중..."
-              : remainingCount === 0
-              ? "모두 뽑음"
-              : "뽑기"}
-          </button>
-          {drawnNames.length > 0 && (
-            <button className="reset-button" onClick={handleReset}>
-              초기화
+        {/* Main Content: Draw + Cards in 2 columns */}
+        <div className="main-content">
+          {/* Draw Result */}
+          <div className="draw-section">
+            <div
+              className={`draw-result ${currentDraw ? "active" : ""} ${
+                isAnimating ? "animating" : ""
+              }`}
+            >
+              {currentDraw ? currentDraw : "?"}
+            </div>
+            <button
+              className="draw-button"
+              onClick={handleDraw}
+              disabled={isAnimating || remainingCount === 0}
+            >
+              {isAnimating
+                ? "뽑는 중..."
+                : remainingCount === 0
+                ? "모두 뽑음"
+                : "뽑기"}
             </button>
-          )}
-        </div>
+            {drawnNames.length > 0 && (
+              <button className="reset-button" onClick={handleReset}>
+                초기화
+              </button>
+            )}
+          </div>
 
-        {/* Name Cards List */}
-        <div className="cards-section">
-          <h2>이름 카드</h2>
-          <div className="cards-grid">
-            {NAMES.map((name, index) => (
-              <div
-                key={index}
-                className={`name-card ${
-                  drawnNames.includes(name) ? "drawn" : ""
-                }`}
-              >
-                <div className="card-content">{name}</div>
-                {drawnNames.includes(name) && (
-                  <div className="drawn-overlay"></div>
-                )}
-              </div>
-            ))}
+          {/* Name Cards List */}
+          <div className="cards-section">
+            {/* <h2>이름 카드</h2> */}
+            <div className="cards-grid">
+              {NAMES.map((name, index) => (
+                <div
+                  key={index}
+                  className={`name-card ${
+                    drawnNames.includes(name) ? "drawn" : ""
+                  }`}
+                >
+                  <div className="card-content">{name}</div>
+                  {drawnNames.includes(name) && (
+                    <div className="drawn-overlay"></div>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
